@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Stylized Automotive "A" Icon matching Antixorcar reference -->
+  <path d="M16 2L2 30H9.5L12.5 23.5H19.5L22.5 30H30L16 2ZM16 11.5L18.2 18H13.8L16 11.5Z" fill="#F4511E"/>
+  <polygon points="12.5,23.5 19.5,23.5 18,20 14,20" fill="#FF7043"/>
+</svg>

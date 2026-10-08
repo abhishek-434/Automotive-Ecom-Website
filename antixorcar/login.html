@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In to Your Account | Antixorcar.com</title>
+  <meta name="description" content="Sign in to your Antixorcar account to view saved vehicles, active enquiries, test drive bookings, and track your car valuation.">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+
+  <!-- Bootstrap 5.3.3 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#071A2B] text-brand-text min-h-screen flex flex-col justify-between antialiased">
+
+  <!-- Minimal Transparent Header -->
+  <header class="py-6 px-4 sm:px-8 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <svg class="w-8 h-8 flex-shrink-0" width="34" height="34" viewBox="0 0 32 32" fill="none">
+          <path d="M16 2L2 30H9.5L12.5 23.5H19.5L22.5 30H30L16 2ZM16 11.5L18.2 18H13.8L16 11.5Z" fill="#F4511E"/>
+          <polygon points="12.5,23.5 19.5,23.5 18,20 14,20" fill="#FF7043"/>
+        </svg>
+        <span class="text-xl font-bold text-white font-sans">Antixorcar.com</span>
+      </a>
+
+      <a href="index.html" class="text-xs font-semibold text-gray-300 hover:text-white flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Back to Marketplace</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Login Form Container -->
+  <main class="flex-1 flex items-center justify-center px-4 py-12 relative">
+    
+    <!-- Background glow decoration -->
+    <div class="absolute w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+    <div class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-100 shadow-2xl max-w-md w-full relative z-10">
+      
+      <div class="text-center mb-8">
+        <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Welcome Back</span>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-brand-navy mt-1">Sign In</h1>
+        <p class="text-xs text-gray-500 mt-1">Access your saved cars, enquiries, and dashboard.</p>
+      </div>
+
+      <!-- Quick Demo Login Button for Testing -->
+      <div class="mb-6 p-3 bg-[#F5F7F9] rounded-2xl border border-dashed border-gray-200 text-center">
+        <p class="text-[11px] text-gray-500 mb-1.5">Quick Evaluation Testing:</p>
+        <button 
+          type="button" 
+          onclick="fillDemoAccount()" 
+          class="w-full py-2 rounded-xl bg-brand-navy hover:bg-black text-white text-xs font-bold transition-all shadow-sm"
+        >
+          <i class="fa-solid fa-bolt text-brand-orange mr-1"></i> Auto-Fill Demo Account (Alex Johnson)
+        </button>
+      </div>
+
+      <form id="login-form" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1.5">Email Address</label>
+          <div class="relative">
+            <i class="fa-regular fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+            <input 
+              id="login-email" 
+              type="email" 
+              required 
+              placeholder="alex@example.com" 
+              class="w-full pl-9 pr-3.5 py-3 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-orange transition-colors"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="block text-xs font-bold text-gray-700">Password</label>
+            <a href="javascript:void(0)" onclick="window.showToast('Password reset link sent to your email.', 'info')" class="text-[11px] font-semibold text-brand-orange hover:underline">
+              Forgot password?
+            </a>
+          </div>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+            <input 
+              id="login-password" 
+              type="password" 
+              required 
+              placeholder="••••••••" 
+              class="w-full pl-9 pr-10 py-3 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-brand-orange transition-colors"
+            />
+            <button 
+              type="button" 
+              onclick="togglePasswordVisibility('login-password', this)" 
+              class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 focus:outline-none"
+            >
+              <i class="fa-regular fa-eye text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-1">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="remember-me" checked class="custom-checkbox rounded text-brand-orange">
+            <span class="text-xs text-gray-600">Remember this device</span>
+          </label>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3.5 rounded-xl btn-primary text-xs uppercase tracking-wider font-extrabold shadow-md">
+            Sign In to Antixorcar →
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Social login divider -->
+      <div class="relative my-6 text-center">
+        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
+        <span class="relative bg-white px-3 text-[11px] text-gray-400 uppercase font-semibold">Or continue with</span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <button onclick="simulateSocialLogin('Google')" class="py-2.5 rounded-xl border border-gray-200 hover:border-brand-orange hover:bg-gray-50 flex items-center justify-center gap-2 text-xs font-semibold text-gray-700 transition-colors">
+          <i class="fa-brands fa-google text-red-500"></i> Google
+        </button>
+        <button onclick="simulateSocialLogin('Apple')" class="py-2.5 rounded-xl border border-gray-200 hover:border-brand-orange hover:bg-gray-50 flex items-center justify-center gap-2 text-xs font-semibold text-gray-700 transition-colors">
+          <i class="fa-brands fa-apple text-gray-900"></i> Apple
+        </button>
+      </div>
+
+      <p class="text-center text-xs text-gray-500 mt-6">
+        Don't have an account yet? 
+        <a href="register.html" class="font-bold text-brand-orange hover:underline">Create an Account</a>
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="py-4 text-center text-xs text-gray-400 border-t border-white/10">
+    <p>© 2026 Antixorcar.com. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/main.js"></script>
+  <script>
+    function togglePasswordVisibility(id, btn) {
+      const input = document.getElementById(id);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    function fillDemoAccount() {
+      document.getElementById('login-email').value = 'alex.johnson@antixor.com';
+      document.getElementById('login-password').value = 'Antixor2026!';
+      window.showToast('Demo credentials auto-filled', 'info');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const name = email.split('@')[0].replace('.', ' ') || 'Alex Johnson';
+
+      const user = {
+        isLoggedIn: true,
+        name: name.charAt(0).toUpperCase() + name.slice(1),
+        email: email,
+        loginTime: new Date().toISOString()
+      };
+
+      localStorage.setItem('antixor_user', JSON.stringify(user));
+      window.showToast(`Welcome back, ${user.name}! Redirecting...`, 'success');
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 800);
+    }
+
+    function simulateSocialLogin(provider) {
+      const user = {
+        isLoggedIn: true,
+        name: `${provider} Driver`,
+        email: `driver@${provider.toLowerCase()}.com`,
+        loginTime: new Date().toISOString()
+      };
+      localStorage.setItem('antixor_user', JSON.stringify(user));
+      window.showToast(`Signed in with ${provider}. Redirecting...`, 'success');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 800);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Your Car — Instant Valuation & 5-Step Listing | Antixorcar.com</title>
+  <meta name="description" content="Sell your vehicle fast with Antixorcar.com. Reach over 10,000 verified buyers, get a free instant market valuation, and enjoy a safe, guaranteed transaction.">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+
+  <!-- Bootstrap 5.3.3 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-brand-lightBg text-brand-text antialiased">
+
+  <!-- ==========================================================================
+       GLOBAL NAVBAR
+       ========================================================================== -->
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 navbar-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Antixorcar Home">
+          <svg class="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 group-hover:scale-105 transition-transform" width="36" height="36" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2L2 30H9.5L12.5 23.5H19.5L22.5 30H30L16 2ZM16 11.5L18.2 18H13.8L16 11.5Z" fill="#F4511E"/>
+            <polygon points="12.5,23.5 19.5,23.5 18,20 14,20" fill="#FF7043"/>
+          </svg>
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-white font-sans">
+            Antixorcar.com
+          </span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+          <a href="index.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="cars.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Cars</a>
+          <a href="sell-car.html" class="text-sm font-semibold text-brand-orange transition-colors">Sell Your Car</a>
+          <a href="financing.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Financing</a>
+          <a href="about.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="contact.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3 sm:gap-4">
+          <a href="cars.html" class="p-2 text-gray-300 hover:text-white transition-colors" title="Search Inventory" aria-label="Search Inventory">
+            <i class="fa-solid fa-magnifying-glass text-base"></i>
+          </a>
+
+          <a href="javascript:void(0)" onclick="openSavedCarsModal()" class="relative p-2 text-gray-300 hover:text-white transition-colors" title="Saved Vehicles" aria-label="Saved Vehicles">
+            <i class="fa-regular fa-heart text-base"></i>
+            <span class="saved-count-badge absolute top-1 right-1 w-4 h-4 rounded-full bg-brand-orange text-white text-[9px] font-bold flex items-center justify-center">0</span>
+          </a>
+
+          <div id="user-nav-account">
+            <a href="login.html" class="p-2 text-gray-300 hover:text-white transition-colors" title="Sign In" aria-label="Sign In">
+              <i class="fa-regular fa-user text-base"></i>
+            </a>
+          </div>
+
+          <a href="cars.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full btn-secondary-dark text-xs uppercase tracking-wider font-bold">
+            Browse Cars
+          </a>
+
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO BANNER
+       ========================================================================== -->
+  <section class="pt-28 pb-12 bg-brand-navy text-white border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+      <span class="text-xs font-bold uppercase tracking-wider text-brand-orange">SELL YOUR VEHICLE</span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2 mb-4">List Your Car in 5 Simple Steps</h1>
+      <p class="text-sm text-gray-300">
+        Connect with over 10,000 verified buyers and dealerships nationwide. Free listing, zero hidden charges, and hassle-free payment guarantee.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MULTI-STEP WIZARD CONTAINER
+       ========================================================================== -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    
+    <!-- Progress Indicator (1 -> 2 -> 3 -> 4 -> 5) -->
+    <div class="mb-10 sm:mb-14">
+      <div class="flex items-center justify-between relative max-w-2xl mx-auto">
+        
+        <!-- Connecting Line Background -->
+        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-gray-200 z-0"></div>
+        <!-- Active Connecting Line -->
+        <div id="wizard-progress-line" class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-brand-orange z-0 transition-all duration-500" style="width: 0%;"></div>
+
+        <!-- Step 1 Dot -->
+        <div class="relative z-10 flex flex-col items-center">
+          <div id="step-dot-1" class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-sm shadow-md transition-all">
+            1
+          </div>
+          <span class="text-[11px] font-bold text-brand-navy mt-2 hidden sm:block">Vehicle Info</span>
+        </div>
+
+        <!-- Step 2 Dot -->
+        <div class="relative z-10 flex flex-col items-center">
+          <div id="step-dot-2" class="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-sm transition-all">
+            2
+          </div>
+          <span class="text-[11px] font-bold text-gray-400 mt-2 hidden sm:block">Details</span>
+        </div>
+
+        <!-- Step 3 Dot -->
+        <div class="relative z-10 flex flex-col items-center">
+          <div id="step-dot-3" class="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-sm transition-all">
+            3
+          </div>
+          <span class="text-[11px] font-bold text-gray-400 mt-2 hidden sm:block">Upload Photos</span>
+        </div>
+
+        <!-- Step 4 Dot -->
+        <div class="relative z-10 flex flex-col items-center">
+          <div id="step-dot-4" class="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-sm transition-all">
+            4
+          </div>
+          <span class="text-[11px] font-bold text-gray-400 mt-2 hidden sm:block">Pricing</span>
+        </div>
+
+        <!-- Step 5 Dot -->
+        <div class="relative z-10 flex flex-col items-center">
+          <div id="step-dot-5" class="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-sm transition-all">
+            5
+          </div>
+          <span class="text-[11px] font-bold text-gray-400 mt-2 hidden sm:block">Contact Info</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-xl max-w-3xl mx-auto">
+      <form id="sell-car-wizard" onsubmit="event.preventDefault();">
+
+        <!-- ==========================================
+             STEP 1: Vehicle Information
+             ========================================== -->
+        <div id="wizard-step-1" class="wizard-step-pane space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Step 1 of 5</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-brand-navy mt-1">Basic Vehicle Information</h2>
+            <p class="text-xs text-gray-500">Provide the fundamental make and model details.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Make *</label>
+              <select id="wizard-make" required class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+                <option value="">Select Make</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Porsche">Porsche</option>
+                <option value="BMW">BMW</option>
+                <option value="Range Rover">Range Rover</option>
+                <option value="Audi">Audi</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Ford">Ford</option>
+                <option value="Lexus">Lexus</option>
+                <option value="Other">Other Make</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Model *</label>
+              <input id="wizard-model" type="text" required placeholder="e.g. GLE 350, 911 Carrera, M8..." class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Year *</label>
+              <select id="wizard-year" required class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023" selected>2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Mileage (km / miles) *</label>
+              <input id="wizard-mileage" type="number" required placeholder="e.g. 15000" class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1.5">Vehicle Condition *</label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:border-brand-orange cursor-pointer">
+                <input type="radio" name="car_condition" value="Excellent / Like New" checked class="text-brand-orange">
+                <span class="text-xs font-semibold text-gray-800">Like New</span>
+              </label>
+              <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:border-brand-orange cursor-pointer">
+                <input type="radio" name="car_condition" value="Good" class="text-brand-orange">
+                <span class="text-xs font-semibold text-gray-800">Good</span>
+              </label>
+              <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:border-brand-orange cursor-pointer">
+                <input type="radio" name="car_condition" value="Fair" class="text-brand-orange">
+                <span class="text-xs font-semibold text-gray-800">Fair</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="flex justify-end pt-4">
+            <button type="button" onclick="goToStep(2)" class="px-8 py-3.5 rounded-xl btn-primary text-xs uppercase tracking-wider font-bold">
+              Next: Vehicle Details →
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 2: Vehicle Details
+             ========================================== -->
+        <div id="wizard-step-2" class="wizard-step-pane hidden space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Step 2 of 5</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-brand-navy mt-1">Vehicle Specifications</h2>
+            <p class="text-xs text-gray-500">Provide engine type, transmission, and registration.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Fuel Type *</label>
+              <select id="wizard-fuel" required class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+                <option value="Petrol">Petrol / Gasoline</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Electric">Electric</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Transmission *</label>
+              <select id="wizard-trans" required class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
+                <option value="Dual-Clutch">Dual-Clutch / PDK</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Exterior Color *</label>
+              <input id="wizard-color" type="text" placeholder="e.g. Obsidian Black, Guards Red..." class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Registration State / VIN</label>
+              <input id="wizard-vin" type="text" placeholder="e.g. California / 17-digit VIN" class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+            </div>
+          </div>
+
+          <div class="flex justify-between pt-4">
+            <button type="button" onclick="goToStep(1)" class="px-6 py-3.5 rounded-xl border border-gray-200 text-xs font-semibold text-gray-600 hover:text-black">
+              ← Back
+            </button>
+            <button type="button" onclick="goToStep(3)" class="px-8 py-3.5 rounded-xl btn-primary text-xs uppercase tracking-wider font-bold">
+              Next: Upload Photos →
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 3: Upload Photos
+             ========================================== -->
+        <div id="wizard-step-3" class="wizard-step-pane hidden space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Step 3 of 5</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-brand-navy mt-1">Upload Vehicle Photos</h2>
+            <p class="text-xs text-gray-500">Cars with 4+ high-res photos sell 3x faster.</p>
+          </div>
+
+          <!-- Drag and drop upload zone -->
+          <div 
+            onclick="simulatePhotoUpload()" 
+            class="border-2 border-dashed border-gray-300 hover:border-brand-orange rounded-3xl p-8 text-center cursor-pointer transition-colors bg-[#F5F7F9] group"
+          >
+            <div class="w-14 h-14 rounded-2xl bg-white shadow-sm text-brand-orange flex items-center justify-center text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <p class="text-sm font-bold text-brand-navy">Click or Drag & Drop Photos Here</p>
+            <p class="text-xs text-gray-400 mt-1">Supports PNG, JPG, WEBP up to 20MB each</p>
+            <span class="inline-block mt-3 px-3 py-1 rounded-full bg-white text-[11px] font-semibold text-brand-orange border border-gray-200 shadow-sm">
+              + Add Photos
+            </span>
+          </div>
+
+          <!-- Uploaded Photos Preview List -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold text-gray-700">Photos Added (<span id="photo-count-badge">3</span>/12)</span>
+              <span class="text-[11px] text-emerald-600 font-semibold"><i class="fa-solid fa-check"></i> High Resolution Detected</span>
+            </div>
+            <div id="photos-preview-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+              <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200 relative group">
+                <img src="assets/images/sell-car-bg.jpg" class="w-full h-full object-cover">
+                <span class="absolute top-1 left-1 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded">Cover</span>
+              </div>
+              <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200 relative group">
+                <img src="assets/images/interior-1.jpg" class="w-full h-full object-cover">
+              </div>
+              <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200 relative group">
+                <img src="assets/images/interior-2.jpg" class="w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between pt-4">
+            <button type="button" onclick="goToStep(2)" class="px-6 py-3.5 rounded-xl border border-gray-200 text-xs font-semibold text-gray-600 hover:text-black">
+              ← Back
+            </button>
+            <button type="button" onclick="goToStep(4)" class="px-8 py-3.5 rounded-xl btn-primary text-xs uppercase tracking-wider font-bold">
+              Next: Pricing & Location →
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 4: Pricing & Location
+             ========================================== -->
+        <div id="wizard-step-4" class="wizard-step-pane hidden space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Step 4 of 5</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-brand-navy mt-1">Expected Price & Location</h2>
+            <p class="text-xs text-gray-500">Set your asking price and city for buyers.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Asking Price (USD $) *</label>
+              <div class="relative">
+                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 font-bold">$</span>
+                <input id="wizard-price" type="number" required placeholder="65000" class="w-full pl-8 pr-3.5 py-3 rounded-xl border border-gray-200 text-xs font-bold text-brand-text focus:outline-none focus:border-brand-orange">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Vehicle Location (City, State) *</label>
+              <input id="wizard-location" type="text" required placeholder="e.g. Miami, FL" class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+            </div>
+          </div>
+
+          <!-- Market Estimate Card -->
+          <div class="bg-brand-lightBg p-4 rounded-2xl border border-gray-200 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-brand-orange/15 text-brand-orange flex items-center justify-center text-lg">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-brand-navy">Antixor Fair Value Guarantee</h4>
+              <p class="text-[11px] text-gray-500">Vehicles priced within market range receive an average of 4 verified dealer offers within 48 hours.</p>
+            </div>
+          </div>
+
+          <div class="flex justify-between pt-4">
+            <button type="button" onclick="goToStep(3)" class="px-6 py-3.5 rounded-xl border border-gray-200 text-xs font-semibold text-gray-600 hover:text-black">
+              ← Back
+            </button>
+            <button type="button" onclick="goToStep(5)" class="px-8 py-3.5 rounded-xl btn-primary text-xs uppercase tracking-wider font-bold">
+              Next: Contact Details →
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 5: Contact Information
+             ========================================== -->
+        <div id="wizard-step-5" class="wizard-step-pane hidden space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Step 5 of 5</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-brand-navy mt-1">Seller Contact Details</h2>
+            <p class="text-xs text-gray-500">Where should prospective buyers and dealers contact you?</p>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Full Name *</label>
+              <input id="wizard-name" type="text" required placeholder="Alex Johnson" class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1.5">Email Address *</label>
+                <input id="wizard-email" type="email" required placeholder="alex@example.com" class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1.5">Phone Number *</label>
+                <input id="wizard-phone" type="tel" required placeholder="+1 (555) 000-0000" class="w-full p-3 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange">
+              </div>
+            </div>
+
+            <label class="flex items-center gap-2 pt-2 cursor-pointer">
+              <input type="checkbox" required checked class="custom-checkbox rounded text-brand-orange">
+              <span class="text-xs text-gray-600">I agree to Antixorcar.com Terms of Service & Privacy Policy</span>
+            </label>
+          </div>
+
+          <div class="flex justify-between pt-4">
+            <button type="button" onclick="goToStep(4)" class="px-6 py-3.5 rounded-xl border border-gray-200 text-xs font-semibold text-gray-600 hover:text-black">
+              ← Back
+            </button>
+            <button type="button" onclick="submitCarListing()" class="px-10 py-4 rounded-xl btn-primary text-xs uppercase tracking-wider font-extrabold shadow-lg">
+              Submit Your Car Now →
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             CONFIRMATION STATE
+             ========================================== -->
+        <div id="wizard-confirmation" class="hidden text-center py-10 space-y-6">
+          <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-lg">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Listing Submitted</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-navy mt-1">Your Vehicle Is Live!</h2>
+            <p class="text-xs sm:text-sm text-gray-500 max-w-md mx-auto mt-2">
+              Listing Reference <span class="font-mono font-bold text-brand-orange">#AXC-82910</span>. Our valuation specialist will verify your vehicle report within 2 hours.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <a href="cars.html" class="px-8 py-3.5 rounded-xl btn-primary text-xs uppercase tracking-wider font-bold">
+              Browse All Cars
+            </a>
+            <a href="index.html" class="px-8 py-3.5 rounded-xl border border-gray-200 text-xs font-bold text-brand-navy hover:bg-gray-50">
+              Return to Homepage
+            </a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER
+       ========================================================================== -->
+  <footer class="bg-brand-navy text-gray-400 pt-16 pb-12 border-t border-white/10 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <svg class="w-8 h-8 flex-shrink-0" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2L2 30H9.5L12.5 23.5H19.5L22.5 30H30L16 2ZM16 11.5L18.2 18H13.8L16 11.5Z" fill="#F4511E"/>
+              <polygon points="12.5,23.5 19.5,23.5 18,20 14,20" fill="#FF7043"/>
+            </svg>
+            <span class="text-xl font-bold text-white font-sans">Antixorcar.com</span>
+          </a>
+          <p class="text-xs text-brand-orange font-semibold tracking-wider uppercase">Drive Your Dreams</p>
+          <p class="text-xs text-gray-400 leading-relaxed max-w-sm">
+            Fast, safe, and transparent car marketplace. Get the best market value for your vehicle today.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="cars.html" class="hover:text-white transition-colors">Buy a Car</a></li>
+            <li><a href="sell-car.html" class="hover:text-white transition-colors">Sell Your Car</a></li>
+            <li><a href="financing.html" class="hover:text-white transition-colors">Financing</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Support</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="contact.html" class="hover:text-white transition-colors">Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">FAQs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Follow Us</h4>
+          <div class="flex items-center gap-3">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-facebook-f text-xs"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-instagram text-xs"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-youtube text-xs"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-linkedin-in text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <p>© 2026 Antixorcar.com. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Multi-step wizard JavaScript logic -->
+  <script>
+    let currentWizardStep = 1;
+
+    function goToStep(stepNum) {
+      if (stepNum > currentWizardStep) {
+        // Validation for Step 1
+        if (currentWizardStep === 1) {
+          const make = document.getElementById('wizard-make').value;
+          const model = document.getElementById('wizard-model').value.trim();
+          if (!make || !model) {
+            window.showToast('Please select make and enter model name', 'warning');
+            return;
+          }
+        }
+      }
+
+      currentWizardStep = stepNum;
+
+      // Update panes
+      for (let i = 1; i <= 5; i++) {
+        const pane = document.getElementById(`wizard-step-${i}`);
+        const dot = document.getElementById(`step-dot-${i}`);
+        if (pane) {
+          if (i === stepNum) {
+            pane.classList.remove('hidden');
+          } else {
+            pane.classList.add('hidden');
+          }
+        }
+        if (dot) {
+          if (i <= stepNum) {
+            dot.classList.add('bg-brand-orange', 'text-white');
+            dot.classList.remove('bg-gray-200', 'text-gray-600');
+          } else {
+            dot.classList.remove('bg-brand-orange', 'text-white');
+            dot.classList.add('bg-gray-200', 'text-gray-600');
+          }
+        }
+      }
+
+      // Update Progress Line percentage
+      const line = document.getElementById('wizard-progress-line');
+      if (line) {
+        const pct = ((stepNum - 1) / 4) * 100;
+        line.style.width = `${pct}%`;
+      }
+
+      window.scrollTo({ top: 150, behavior: 'smooth' });
+    }
+
+    function simulatePhotoUpload() {
+      const grid = document.getElementById('photos-preview-grid');
+      const badge = document.getElementById('photo-count-badge');
+      if (!grid) return;
+
+      const newPhotos = [
+        'assets/images/mercedes-gle.jpg',
+        'assets/images/category-sports.jpg',
+        'assets/images/luxury-headlight.jpg'
+      ];
+      const randomPhoto = newPhotos[Math.floor(Math.random() * newPhotos.length)];
+
+      const card = document.createElement('div');
+      card.className = 'aspect-[4/3] rounded-xl overflow-hidden bg-gray-200 relative group animate-float';
+      card.innerHTML = `<img src="${randomPhoto}" class="w-full h-full object-cover">`;
+      grid.appendChild(card);
+
+      const currentCount = grid.children.length;
+      if (badge) badge.textContent = currentCount;
+      window.showToast('Photo uploaded and verified successfully!', 'success');
+    }
+
+    function submitCarListing() {
+      const name = document.getElementById('wizard-name').value.trim();
+      const email = document.getElementById('wizard-email').value.trim();
+      const phone = document.getElementById('wizard-phone').value.trim();
+
+      if (!name || !email || !phone) {
+        window.showToast('Please fill out all contact fields', 'warning');
+        return;
+      }
+
+      // Hide all steps and show confirmation
+      for (let i = 1; i <= 5; i++) {
+        const pane = document.getElementById(`wizard-step-${i}`);
+        if (pane) pane.classList.add('hidden');
+      }
+
+      const conf = document.getElementById('wizard-confirmation');
+      if (conf) conf.classList.remove('hidden');
+
+      window.showToast('Vehicle listing submitted successfully!', 'success');
+    }
+
+    // Pre-fill model if arrived from Homepage Mini Valuation widget
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const paramModel = params.get('model');
+      if (paramModel) {
+        const modelInput = document.getElementById('wizard-model');
+        if (modelInput) modelInput.value = decodeURIComponent(paramModel);
+      }
+    });
+  </script>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

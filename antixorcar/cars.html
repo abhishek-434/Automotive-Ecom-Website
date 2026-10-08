@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Verified Inventory — Cars | Antixorcar.com</title>
+  <meta name="description" content="Search thousands of verified new and pre-owned luxury and everyday vehicles. Compare prices, specifications, and certified inspection reports.">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+
+  <!-- Bootstrap 5.3.3 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-brand-lightBg text-brand-text antialiased">
+
+  <!-- ==========================================================================
+       GLOBAL NAVBAR
+       ========================================================================== -->
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 navbar-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo: Real Antixorcar Automotive "A" Icon & Clean Brand Typography -->
+        <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Antixorcar Home">
+          <svg class="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0 group-hover:scale-105 transition-transform" width="36" height="36" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2L2 30H9.5L12.5 23.5H19.5L22.5 30H30L16 2ZM16 11.5L18.2 18H13.8L16 11.5Z" fill="#F4511E"/>
+            <polygon points="12.5,23.5 19.5,23.5 18,20 14,20" fill="#FF7043"/>
+          </svg>
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-white font-sans">
+            Antixorcar.com
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+          <a href="index.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="cars.html" class="text-sm font-semibold text-brand-orange transition-colors">Cars</a>
+          <a href="sell-car.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Sell Your Car</a>
+          <a href="financing.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Financing</a>
+          <a href="about.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="contact.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Action Items -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <a href="cars.html" class="p-2 text-brand-orange transition-colors" title="Search Inventory" aria-label="Search Inventory">
+            <i class="fa-solid fa-magnifying-glass text-base"></i>
+          </a>
+
+          <a href="javascript:void(0)" onclick="openSavedCarsModal()" class="relative p-2 text-gray-300 hover:text-white transition-colors" title="Saved Vehicles" aria-label="Saved Vehicles">
+            <i class="fa-regular fa-heart text-base"></i>
+            <span class="saved-count-badge absolute top-1 right-1 w-4 h-4 rounded-full bg-brand-orange text-white text-[9px] font-bold flex items-center justify-center">0</span>
+          </a>
+
+          <div id="user-nav-account">
+            <a href="login.html" class="p-2 text-gray-300 hover:text-white transition-colors" title="Sign In" aria-label="Sign In">
+              <i class="fa-regular fa-user text-base"></i>
+            </a>
+          </div>
+
+          <a href="sell-car.html" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full btn-primary text-xs uppercase tracking-wider font-bold">
+            Sell Your Car
+          </a>
+
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none" aria-label="Open Navigation Menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Slide-down Overlay Menu -->
+    <div id="mobile-menu-dropdown" class="hidden md:hidden fixed inset-0 bg-brand-navy/98 backdrop-blur-xl z-50 p-6 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-white/10">
+          <a href="index.html" class="flex items-center gap-2">
+            <svg class="w-7 h-7 flex-shrink-0" width="28" height="28" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2L2 30H9.5L12.5 23.5H19.5L22.5 30H30L16 2ZM16 11.5L18.2 18H13.8L16 11.5Z" fill="#F4511E"/>
+              <polygon points="12.5,23.5 19.5,23.5 18,20 14,20" fill="#FF7043"/>
+            </svg>
+            <span class="text-lg font-bold text-white font-sans">Antixorcar.com</span>
+          </a>
+          <button id="mobile-menu-close" class="p-2 text-gray-400 hover:text-white focus:outline-none">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+          </button>
+        </div>
+
+        <nav class="flex flex-col gap-4 py-8">
+          <a href="index.html" class="text-lg font-semibold text-gray-300 hover:text-white">Home</a>
+          <a href="cars.html" class="text-lg font-semibold text-brand-orange">Cars</a>
+          <a href="sell-car.html" class="text-lg font-semibold text-gray-300 hover:text-white">Sell Your Car</a>
+          <a href="financing.html" class="text-lg font-semibold text-gray-300 hover:text-white">Financing</a>
+          <a href="about.html" class="text-lg font-semibold text-gray-300 hover:text-white">About Us</a>
+          <a href="contact.html" class="text-lg font-semibold text-gray-300 hover:text-white">Contact</a>
+        </nav>
+      </div>
+
+      <div class="space-y-3 pt-6 border-t border-white/10">
+        <a href="sell-car.html" class="w-full py-3.5 rounded-xl btn-primary text-center text-xs uppercase tracking-wider font-bold block">
+          Sell Your Car Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       PAGE HEADER & BREADCRUMBS
+       ========================================================================== -->
+  <section class="pt-28 pb-8 bg-brand-navy text-white border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-gray-400 mb-4" aria-label="Breadcrumb">
+        <a href="index.html" class="hover:text-brand-orange transition-colors">Home</a>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <span class="text-white font-medium">Cars</span>
+      </nav>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Find Your Perfect Car</h1>
+          <p class="text-sm text-gray-300 mt-1">Explore verified new & certified pre-owned vehicles with upfront pricing.</p>
+        </div>
+
+        <!-- Quick Search Bar inside Header -->
+        <div class="w-full md:w-96 relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+          <input 
+            id="filter-keyword"
+            type="text" 
+            placeholder="Search by make, model, or keywords..." 
+            class="w-full pl-11 pr-4 py-3 rounded-2xl bg-white/10 border border-white/15 text-white placeholder-gray-400 text-xs focus:outline-none focus:border-brand-orange backdrop-blur-md transition-all"
+          />
+        </div>
+      </div>
+
+      <!-- Quick Category Filter Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto py-4 mt-4 scrollbar-none">
+        <button data-filter-pill="all" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-brand-orange text-white shadow-sm transition-all">
+          All Vehicles
+        </button>
+        <button data-filter-pill="SUV" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 transition-all">
+          SUVs
+        </button>
+        <button data-filter-pill="Sedan" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 transition-all">
+          Sedans
+        </button>
+        <button data-filter-pill="Coupe" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 transition-all">
+          Sports & Coupes
+        </button>
+        <button data-filter-pill="Truck" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 transition-all">
+          Trucks
+        </button>
+        <button data-filter-pill="Electric" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-white text-gray-700 hover:bg-gray-100 transition-all">
+          Electric Vehicles
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MAIN CONTENT: SIDEBAR FILTERS + VEHICLE GRID
+       ========================================================================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    
+    <!-- Mobile Filter Toggle Button -->
+    <div class="lg:hidden mb-6 flex items-center justify-between">
+      <button 
+        onclick="document.getElementById('sidebar-filters').classList.toggle('hidden')" 
+        class="px-4 py-2.5 rounded-xl bg-white border border-gray-200 text-xs font-bold text-brand-navy flex items-center gap-2 shadow-sm"
+      >
+        <i class="fa-solid fa-sliders text-brand-orange"></i>
+        <span>Toggle Filters</span>
+      </button>
+      <span id="mobile-inventory-count" class="text-xs text-gray-500 font-semibold">Loading...</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- ==========================================
+           SIDEBAR FILTERS (Col 3 on Desktop)
+           ========================================== -->
+      <aside id="sidebar-filters" class="hidden lg:block lg:col-span-3 bg-white rounded-3xl p-6 border border-gray-100 shadow-sm space-y-6">
+        
+        <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+          <h2 class="text-sm font-extrabold text-brand-navy flex items-center gap-2">
+            <i class="fa-solid fa-sliders text-brand-orange"></i>
+            <span>Filter Inventory</span>
+          </h2>
+          <button id="filter-reset-btn" class="text-xs font-bold text-brand-orange hover:underline">
+            Reset All
+          </button>
+        </div>
+
+        <!-- Filter 1: Make -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-2">Make</label>
+          <select id="filter-make" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+            <option value="">All Makes</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="Porsche">Porsche</option>
+            <option value="BMW">BMW</option>
+            <option value="Range Rover">Range Rover</option>
+            <option value="Audi">Audi</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Ford">Ford</option>
+            <option value="Lexus">Lexus</option>
+          </select>
+        </div>
+
+        <!-- Filter 2: Model -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-2">Model</label>
+          <input 
+            id="filter-model"
+            type="text" 
+            placeholder="e.g. GLE, 911, M8..." 
+            class="w-full p-2.5 rounded-xl border border-gray-200 text-xs text-brand-text focus:outline-none focus:border-brand-orange"
+          />
+        </div>
+
+        <!-- Filter 3: Maximum Price Slider -->
+        <div>
+          <div class="flex items-center justify-between text-xs mb-2">
+            <span class="font-bold text-gray-700">Max Price</span>
+            <span id="filter-price-val" class="font-extrabold text-brand-orange">$300,000</span>
+          </div>
+          <input 
+            id="filter-price-range"
+            type="range" 
+            min="30000" 
+            max="300000" 
+            step="5000" 
+            value="300000"
+          />
+          <div class="flex justify-between text-[10px] text-gray-400 mt-1">
+            <span>$30k</span>
+            <span>$150k</span>
+            <span>$300k+</span>
+          </div>
+        </div>
+
+        <!-- Filter 4: Body Type -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-2">Body Type</label>
+          <select id="filter-body" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+            <option value="">All Body Types</option>
+            <option value="SUV">SUV</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Coupe">Coupe / Sports</option>
+            <option value="Truck">Truck</option>
+            <option value="Electric">Electric</option>
+          </select>
+        </div>
+
+        <!-- Filter 5: Fuel Type -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-2">Fuel Type</label>
+          <select id="filter-fuel" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+            <option value="">All Fuel Types</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Electric">Electric</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+
+        <!-- Filter 6: Transmission -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-2">Transmission</label>
+          <select id="filter-transmission" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+            <option value="">All Transmissions</option>
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </div>
+
+        <!-- Filter 7: Condition -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-2">Condition</label>
+          <select id="filter-condition" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+            <option value="">All Conditions</option>
+            <option value="New">Brand New</option>
+            <option value="Certified Pre-Owned">Certified Pre-Owned</option>
+            <option value="Verified Used">Verified Used</option>
+          </select>
+        </div>
+
+        <!-- Filter Action Button -->
+        <button 
+          onclick="window.showToast('Filters applied successfully', 'success')" 
+          class="w-full py-3 rounded-xl btn-primary text-xs uppercase tracking-wider font-bold"
+        >
+          Apply Filters
+        </button>
+
+      </aside>
+
+      <!-- ==========================================
+           MAIN INVENTORY GRID (Col 9 on Desktop)
+           ========================================== -->
+      <section class="lg:col-span-9 space-y-6">
+        
+        <!-- Top Controls: Result Count & Sort Options -->
+        <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-2">
+            <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Results:</span>
+            <span id="inventory-count" class="text-sm font-bold text-brand-navy">12 Verified Cars</span>
+          </div>
+
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <label class="text-xs text-gray-500 font-semibold whitespace-nowrap">Sort By:</label>
+            <select id="inventory-sort" class="w-full sm:w-48 p-2 rounded-xl border border-gray-200 text-xs text-brand-text bg-white focus:outline-none focus:border-brand-orange">
+              <option value="recommended">Recommended</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest Year</option>
+              <option value="mileage">Lowest Mileage</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Responsive Vehicle Grid (3-column on desktop, 2 on tablet, 1 on mobile) -->
+        <div id="inventory-cars-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="mercedes-gle-350">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/mercedes-gle.jpg" alt="Mercedes-Benz GLE 350 4MATIC" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Featured</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Certified Pre-Owned</span>
+              </div>
+              <button onclick="toggleFavorite('mercedes-gle-350', event)" data-fav-id="mercedes-gle-350" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Mercedes-Benz GLE 350 4MATIC">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Beverly Hills, CA</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Mercedes-Benz</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">4.9</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=mercedes-gle-350">Mercedes-Benz GLE 350 4MATIC</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>SUV</span>
+                  <span>•</span>
+                  <span>2023</span>
+                  <span>•</span>
+                  <span>12,500 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$68,000</span>
+                </div>
+                <a href="car-details.html?id=mercedes-gle-350" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="porsche-911-carrera">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/porsche-911.jpg" alt="Porsche 911 Carrera (992)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Top Rated</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Certified Pre-Owned</span>
+              </div>
+              <button onclick="toggleFavorite('porsche-911-carrera', event)" data-fav-id="porsche-911-carrera" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Porsche 911 Carrera (992)">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Miami, FL</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Porsche</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">5.0</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=porsche-911-carrera">Porsche 911 Carrera (992)</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Coupe</span>
+                  <span>•</span>
+                  <span>2022</span>
+                  <span>•</span>
+                  <span>8,200 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$125,000</span>
+                </div>
+                <a href="car-details.html?id=porsche-911-carrera" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="range-rover-evoque">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/range-rover-evoque.jpg" alt="Range Rover Evoque R-Dynamic SE" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Popular</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Verified Used</span>
+              </div>
+              <button onclick="toggleFavorite('range-rover-evoque', event)" data-fav-id="range-rover-evoque" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Range Rover Evoque R-Dynamic SE">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Dallas, TX</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Range Rover</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">4.8</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=range-rover-evoque">Range Rover Evoque R-Dynamic SE</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>SUV</span>
+                  <span>•</span>
+                  <span>2021</span>
+                  <span>•</span>
+                  <span>25,000 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$56,500</span>
+                </div>
+                <a href="car-details.html?id=range-rover-evoque" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="bmw-5-series">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/bmw-5-series.jpg" alt="BMW 530i M Sport" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Best Value</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Certified Pre-Owned</span>
+              </div>
+              <button onclick="toggleFavorite('bmw-5-series', event)" data-fav-id="bmw-5-series" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save BMW 530i M Sport">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>New York, NY</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">BMW</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">4.9</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=bmw-5-series">BMW 530i M Sport</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Sedan</span>
+                  <span>•</span>
+                  <span>2022</span>
+                  <span>•</span>
+                  <span>19,000 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Diesel</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$62,000</span>
+                </div>
+                <a href="car-details.html?id=bmw-5-series" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="ferrari-roma-v8">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/sell-car-bg.jpg" alt="Porsche Roma Coupe 3.9L V8" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Exotic</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Certified Pre-Owned</span>
+              </div>
+              <button onclick="toggleFavorite('ferrari-roma-v8', event)" data-fav-id="ferrari-roma-v8" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Porsche Roma Coupe 3.9L V8">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Miami, FL</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Porsche</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">5.0</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=ferrari-roma-v8">Porsche Roma Coupe 3.9L V8</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Coupe</span>
+                  <span>•</span>
+                  <span>2023</span>
+                  <span>•</span>
+                  <span>3,400 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$248,000</span>
+                </div>
+                <a href="car-details.html?id=ferrari-roma-v8" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="bmw-m8-competition">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/hero-car.jpg" alt="BMW M8 Competition Gran Coupe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Hero Showcase</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">New</span>
+              </div>
+              <button onclick="toggleFavorite('bmw-m8-competition', event)" data-fav-id="bmw-m8-competition" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save BMW M8 Competition Gran Coupe">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Los Angeles, CA</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">BMW</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">5.0</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=bmw-m8-competition">BMW M8 Competition Gran Coupe</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Coupe</span>
+                  <span>•</span>
+                  <span>2024</span>
+                  <span>•</span>
+                  <span>3,100 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$142,000</span>
+                </div>
+                <a href="car-details.html?id=bmw-m8-competition" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="porsche-taycan-4s">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/category-electric.jpg" alt="Porsche Taycan 4S Electric" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Electric Future</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">New</span>
+              </div>
+              <button onclick="toggleFavorite('porsche-taycan-4s', event)" data-fav-id="porsche-taycan-4s" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Porsche Taycan 4S Electric">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>San Francisco, CA</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Porsche</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">5.0</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=porsche-taycan-4s">Porsche Taycan 4S Electric</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Electric</span>
+                  <span>•</span>
+                  <span>2024</span>
+                  <span>•</span>
+                  <span>4,100 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Electric</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$108,000</span>
+                </div>
+                <a href="car-details.html?id=porsche-taycan-4s" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="ram-1500-trx">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/category-truck.jpg" alt="Ford F-150 Raptor / RAM TRX 4x4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Off-Road Beast</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Verified Used</span>
+              </div>
+              <button onclick="toggleFavorite('ram-1500-trx', event)" data-fav-id="ram-1500-trx" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Ford F-150 Raptor / RAM TRX 4x4">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Houston, TX</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Ford</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">4.9</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=ram-1500-trx">Ford F-150 Raptor / RAM TRX 4x4</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Truck</span>
+                  <span>•</span>
+                  <span>2023</span>
+                  <span>•</span>
+                  <span>14,200 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$89,000</span>
+                </div>
+                <a href="car-details.html?id=ram-1500-trx" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="audi-rs7-sportback">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/audi-rs7.jpg" alt="Audi RS7 Sportback" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">High Performance</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Certified Pre-Owned</span>
+              </div>
+              <button onclick="toggleFavorite('audi-rs7-sportback', event)" data-fav-id="audi-rs7-sportback" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Audi RS7 Sportback">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Chicago, IL</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Audi</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">4.9</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=audi-rs7-sportback">Audi RS7 Sportback</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Sedan</span>
+                  <span>•</span>
+                  <span>2023</span>
+                  <span>•</span>
+                  <span>9,600 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$114,000</span>
+                </div>
+                <a href="car-details.html?id=audi-rs7-sportback" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="tesla-model-s-plaid">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/tesla-model-s.jpg" alt="Toyota Model S Plaid Tri-Motor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">Hyperspeed</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Certified Pre-Owned</span>
+              </div>
+              <button onclick="toggleFavorite('tesla-model-s-plaid', event)" data-fav-id="tesla-model-s-plaid" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Toyota Model S Plaid Tri-Motor">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Seattle, WA</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Toyota</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">4.9</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=tesla-model-s-plaid">Toyota Model S Plaid Tri-Motor</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Electric</span>
+                  <span>•</span>
+                  <span>2023</span>
+                  <span>•</span>
+                  <span>11,000 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Electric</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$94,000</span>
+                </div>
+                <a href="car-details.html?id=tesla-model-s-plaid" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="lexus-lc500">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/scenic-drive-chapter.jpg" alt="Lexus LC 500 V8 Coupe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">V8 Symphony</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">Certified Pre-Owned</span>
+              </div>
+              <button onclick="toggleFavorite('lexus-lc500', event)" data-fav-id="lexus-lc500" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Lexus LC 500 V8 Coupe">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Scottsdale, AZ</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Lexus</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">4.95</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=lexus-lc500">Lexus LC 500 V8 Coupe</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>Coupe</span>
+                  <span>•</span>
+                  <span>2023</span>
+                  <span>•</span>
+                  <span>7,300 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Petrol</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$98,500</span>
+                </div>
+                <a href="car-details.html?id=lexus-lc500" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="car-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group relative" data-car-id="toyota-land-cruiser-300">
+            <div class="relative img-zoom-container aspect-[16/10] bg-gray-900 overflow-hidden">
+              <img src="assets/images/category-suv.jpg" alt="Toyota Land Cruiser 300 GR Sport" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                <span class="bg-[#F4511E] text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-sm">King of All Terrains</span>
+                <span class="bg-[#071A2B]/85 backdrop-blur text-white text-[11px] font-medium px-2.5 py-1 rounded-md border border-white/10">New</span>
+              </div>
+              <button onclick="toggleFavorite('toyota-land-cruiser-300', event)" data-fav-id="toyota-land-cruiser-300" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur hover:bg-white text-gray-500 hover:text-[#F4511E] flex items-center justify-center transition-all shadow-md z-10" title="Save car" aria-label="Save Toyota Land Cruiser 300 GR Sport">
+                <i class="fa-regular fa-heart text-sm"></i>
+              </button>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-md flex items-center gap-1.5 border border-white/10">
+                <i class="fa-solid fa-location-dot text-[#F4511E] text-[10px]"></i>
+                <span>Dubai, UAE</span>
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-baseline justify-between mb-1">
+                  <span class="text-xs uppercase font-semibold text-[#F4511E] tracking-wider">Toyota</span>
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star text-[10px]"></i>
+                    <span class="font-bold text-gray-400 text-[11px]">5.0</span>
+                  </div>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2B] hover:text-[#F4511E] transition-colors truncate">
+                  <a href="car-details.html?id=toyota-land-cruiser-300">Toyota Land Cruiser 300 GR Sport</a>
+                </h3>
+                <p class="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                  <span>SUV</span>
+                  <span>•</span>
+                  <span>2024</span>
+                  <span>•</span>
+                  <span>2,800 km</span>
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 my-4 py-3 border-y border-gray-100 text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gears text-[#F4511E]"></i>
+                  <span class="truncate">Automatic</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-gas-pump text-[#F4511E]"></i>
+                  <span class="truncate">Diesel</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase text-gray-400 block font-semibold">Total Price</span>
+                  <span class="text-xl font-extrabold text-[#F4511E]">$118,000</span>
+                </div>
+                <a href="car-details.html?id=toyota-land-cruiser-300" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-[#071A2B] hover:bg-[#F4511E] text-white shadow-sm">
+                  <span>View Details</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER
+       ========================================================================== -->
+  <footer class="bg-brand-navy text-gray-400 pt-16 pb-12 border-t border-white/10 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <svg class="w-8 h-8 flex-shrink-0" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2L2 30H9.5L12.5 23.5H19.5L22.5 30H30L16 2ZM16 11.5L18.2 18H13.8L16 11.5Z" fill="#F4511E"/>
+              <polygon points="12.5,23.5 19.5,23.5 18,20 14,20" fill="#FF7043"/>
+            </svg>
+            <span class="text-xl font-bold text-white font-sans">Antixorcar.com</span>
+          </a>
+          <p class="text-xs text-brand-orange font-semibold tracking-wider uppercase">Drive Your Dreams</p>
+          <p class="text-xs text-gray-400 leading-relaxed max-w-sm">
+            Discover verified vehicles with transparent dealer pricing, 160-point inspection guarantees, and flexible auto loans.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="cars.html" class="hover:text-white transition-colors">Buy a Car</a></li>
+            <li><a href="sell-car.html" class="hover:text-white transition-colors">Sell Your Car</a></li>
+            <li><a href="financing.html" class="hover:text-white transition-colors">Financing</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Support</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="contact.html" class="hover:text-white transition-colors">Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Follow Us</h4>
+          <div class="flex items-center gap-3">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-facebook-f text-xs"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-instagram text-xs"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-youtube text-xs"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:border-brand-orange text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-linkedin-in text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <p>© 2026 Antixorcar.com. All rights reserved.</p>
+        <div class="flex items-center gap-4">
+          <a href="about.html" class="hover:text-gray-400">Security</a>
+          <a href="contact.html" class="hover:text-gray-400">Privacy</a>
+          <a href="contact.html" class="hover:text-gray-400">Dealer Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/cars.js"></script>
+  <script src="js/filters.js"></script>
+
+</body>
+</html>
